@@ -1,0 +1,183 @@
+/* Importando Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Header */
+.navbar {
+    background-color: #000;
+}
+
+.category-section {
+    margin: 40px 0;
+    padding: 10px;
+    background-color: #000; /* Preto */
+}
+
+.category-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #FF0000;
+}
+
+/* Adicione isso no seu arquivo CSS */
+.category-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.scroll-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 10; /* Garante que os botões fiquem sobre os vídeos */
+}
+
+/* Defina a largura dos vídeos e do contêiner */
+.category-videos {
+    display: flex;
+    gap: 20px; /* Espaçamento entre os vídeos */
+    transition: transform 0.5s ease; /* Suaviza a transição ao mover os vídeos */
+    padding: 10px; /* Adiciona padding para não deixar os vídeos colados nos botões */
+}
+
+.category-videos::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
+
+/* Faz os vídeos terem o mesmo tamanho */
+.video-card {
+    width: 200px; /* Tamanho fixo para cada vídeo */
+    height: auto;
+}
+
+.small-video {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.video-card video {
+    width: 100%;
+    border-radius: 8px; /* Deixa os vídeos com bordas arredondadas */
+}
+
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #FFF;
+    text-align: center;
+    padding: 5px 0; /* Aumentei o padding para dar mais espaçamento */
+    position: relative; /* Faz o rodapé se posicionar após o conteúdo */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1; /* Garante que o rodapé fique abaixo de outros elementos */
+    margin-top: 30px; /* Dá um pequeno espaçamento entre o conteúdo e o rodapé */
+}
+
+
+footer a {
+    color: #FF0000;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #FFC107;
+}
+
+
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .video-card {
+        width: 150px; /* Ajuste o tamanho do vídeo em telas menores */
+    }
+
+    .category-title {
+        font-size: 20px; /* Ajuste a fonte para telas menores */
+    }
+}
+
+.category-videos {
+    display: flex;
+    gap: 20px; /* Espaçamento entre os vídeos */
+    overflow: hidden; /* Esconde os vídeos fora da área visível */
+    width: 100%; /* Faz o contêiner ocupar o espaço disponível */
+}
+
+.video-card {
+    flex: 0 0 calc(100% / 6 - 20px); /* Calcula o tamanho ideal para exibir 6 vídeos */
+    margin-right: 20px;
+}
+
+.category-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.scroll-btn {
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+.video-card {
+    border: 1px solid red; /* Borda vermelha */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que o vídeo não "escape" */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* Suaviza o efeito */
+}
+
+.video-card:hover {
+    transform: scale(0.9); /* Efeito de zoom */
+    border-color: #ff4500; /* Borda muda para laranja-avermelhada (opcional) */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .category-title {
+        font-size: 20px;
+    }
+
+    .video-card {
+        width: 150px; /* Ajuste o tamanho em telas menores */
+        height: 100px;
+    }
+}
