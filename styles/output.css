@@ -659,6 +659,10 @@ video {
   inset: -0.25rem;
 }
 
+.inset-0 {
+  inset: 0px;
+}
+
 .end-1 {
   inset-inline-end: 0.25rem;
 }
@@ -669,6 +673,10 @@ video {
 
 .isolation-auto {
   isolation: auto;
+}
+
+.z-10 {
+  z-index: 10;
 }
 
 .float-start {
@@ -713,6 +721,10 @@ video {
 
 .clear-none {
   clear: none;
+}
+
+.ml-4 {
+  margin-left: 1rem;
 }
 
 .mt-2 {
@@ -818,12 +830,16 @@ video {
   display: none;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
 .h-\[100px\] {
   height: 100px;
 }
 
-.max-h-\[40px\] {
-  max-height: 40px;
+.w-6 {
+  width: 1.5rem;
 }
 
 .w-\[this-is\\\\\] {
@@ -1372,6 +1388,18 @@ video {
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
 .space-y-reverse > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 1;
 }
@@ -1686,6 +1714,10 @@ video {
   border-radius: 9999px;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .rounded-b {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -1815,18 +1847,27 @@ video {
   background-color: rgb(255 0 0 / var(--tw-bg-opacity));
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-red-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
-.bg-zinc-900 {
+.bg-white {
   --tw-bg-opacity: 1;
-  background-color: rgb(24 24 27 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-opacity-75 {
+  --tw-bg-opacity: 0.75;
 }
 
 .bg-home {
-  background-image: url('/assets/sx695.png');
+  background-image: url('/assets/sx694.png');
 }
 
 .decoration-slice {
@@ -1947,6 +1988,14 @@ video {
      object-fit: scale-down;
 }
 
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-8 {
+  padding: 2rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -1957,9 +2006,9 @@ video {
   padding-right: 0.375rem;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .px-5 {
@@ -1972,9 +2021,14 @@ video {
   padding-right: 2rem;
 }
 
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .text-left {
@@ -2112,6 +2166,11 @@ video {
 .text-blue-500 {
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -2613,15 +2672,54 @@ footer a:hover {
 
 /* Responsividade */
 
-@media (max-width: 768px) {
-  .video-card {
-    width: 150px;
-    /* Ajuste o tamanho do vídeo em telas menores */
+@media (max-width: 1024px) {
+  /* Para tablets */
+
+  .category-title {
+    font-size: 22px;
+    /* Ajuste a fonte para tablets */
   }
+
+  .category-videos {
+    display: flex;
+    gap: 20px;
+    /* Espaçamento entre os vídeos */
+    width: 100%;
+  }
+
+  .video-card {
+    flex: 0 0 calc(25% - 20px) !important;
+    /* Exibe 4 vídeos por linha (25% da largura cada) */
+    margin-right: 20px !important;
+    /* Espaçamento entre os vídeos */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Para celulares */
 
   .category-title {
     font-size: 20px;
-    /* Ajuste a fonte para telas menores */
+    /* Ajuste a fonte para celulares */
+  }
+
+  .category-videos {
+    display: flex;
+    gap: 20px;
+    /* Espaçamento entre os vídeos */
+    width: 100%;
+  }
+
+  .video-card {
+    flex: 0 0 calc(50% - 20px) !important;
+    /* Exibe 2 vídeos por linha (50% da largura cada) */
+    margin-right: 20px !important;
+    /* Espaçamento entre os vídeos */
+  }
+
+  footer {
+    padding: 10px 0;
+    /* Ajuste o padding do rodapé em telas pequenas */
   }
 }
 
@@ -2688,18 +2786,181 @@ footer a:hover {
   /* Borda muda para laranja-avermelhada (opcional) */
 }
 
-/* Responsividade */
+/* Estilo padrão para grandes telas */
+
+.bg-home {
+  background-size: 15%;
+  /* Reduz a imagem para % do tamanho original */
+  background-position: center;
+  /* Garante que a imagem fique centralizada */
+  background-repeat: no-repeat;
+  /* Evita repetição da imagem */
+}
+
+/* Ajustes para tablets (telas menores que 1024px) */
+
+@media (max-width: 1024px) {
+  .bg-home {
+    background-size: 20%;
+    /* Aumenta um pouco o tamanho da imagem para tablets */
+  }
+}
+
+/* Ajustes para dispositivos móveis (telas menores que 768px) */
 
 @media (max-width: 768px) {
-  .category-title {
-    font-size: 20px;
+  .bg-home {
+    background-size: 25%;
+    /* Aumenta a imagem para telas menores */
   }
+}
 
-  .video-card {
-    width: 150px;
-    /* Ajuste o tamanho em telas menores */
-    height: 100px;
+/* Para dispositivos muito pequenos (ex: celulares em paisagem) */
+
+@media (max-width: 480px) {
+  .bg-home {
+    background-size: 35%;
+    /* Ajuste proporcional para dispositivos ainda menores */
   }
+}
+
+/* Para dispositivos muito pequenos (ex: celulares em paisagem) */
+
+@media (max-width: 380px) {
+  .bg-home {
+    background-size: 27%;
+    /* Ajuste proporcional para dispositivos ainda menores */
+  }
+}
+
+/* Menu deslizante */
+
+#mobile-menu {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  width: 50%;
+  /* Mantendo 50% da largura */
+  max-width: 300px;
+  /* Limite de largura */
+  background-color: #000;
+  /* Fundo preto */
+  height: 100%;
+  /* Altura total */
+  position: fixed;
+  top: 0;
+  /* Alinhado ao topo */
+  left: 0;
+  /* Alinhado à esquerda */
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  /* Itens alinhados verticalmente */
+  padding: 1rem;
+  gap: 1rem;
+  /* Espaçamento entre os links */
+  justify-content: flex-start;
+  /* Começa no topo */
+  align-items: flex-start;
+  /* Alinhado à esquerda */
+  box-sizing: border-box;
+  /* Garantindo que padding não altere dimensões */
+}
+
+/* Quando o menu está aberto */
+
+#mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Links do menu */
+
+#mobile-menu a {
+  text-align: left;
+  /* Alinhar o texto à esquerda */
+  width: 100%;
+  /* Ocupa toda a largura do menu */
+  display: block;
+  /* Garante que cada link ocupa uma linha */
+  padding: 0.5rem 0;
+  /* Espaçamento interno para facilitar o toque */
+  box-sizing: border-box;
+  /* Padding não interfere na largura */
+}
+
+/* Sobreposição para o restante da tela */
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Sombra transparente */
+  z-index: 10;
+  display: none;
+  /* Oculto por padrão */
+}
+
+#overlay.active {
+  display: block;
+  /* Mostra a sobreposição ao abrir o menu */
+}
+
+/* Estilo para o menu de categorias (visível em telas grandes) */
+
+#categories-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  /* Faz o menu aparecer abaixo do item "Home" */
+  background-color: #000;
+  color: white;
+  padding: 10px 0;
+  margin-top: 5px;
+  width: 200px;
+  /* Ajuste a largura conforme necessário */
+  z-index: 100;
+  /* Para garantir que o menu fique acima de outros elementos */
+}
+
+#categories-menu a {
+  display: block;
+  /* Faz com que os links ocupem a largura total */
+  padding: 10px;
+  font-weight: bold;
+}
+
+/* Tornar o menu de categorias visível */
+
+#categories-menu.show {
+  display: block;
+}
+
+/* Reposicionar o menu de categorias no canto superior esquerdo quando aberto */
+
+#categories-menu.show {
+  position: fixed;
+  /* Fixa o menu no canto superior esquerdo */
+  top: 0;
+  /* Alinha no topo da tela */
+  left: 0;
+  /* Alinha no canto esquerdo da tela */
+  width: 100px;
+  /* Largura fixa do menu */
+  height: auto;
+  /* Ajusta a altura conforme o conteúdo */
+  margin: 0;
+  /* Remove margens adicionais */
+  padding: 10px;
+  /* Mantém o espaçamento interno */
+  background-color: #000;
+  /* Garante a visibilidade do menu */
+  z-index: 1000;
+  /* Certifica-se de que o menu fica acima de outros elementos */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Adiciona uma sombra para destaque */
 }
 
 @media (min-width: 640px) {
@@ -2747,11 +3008,6 @@ footer a:hover {
   font-weight: 700;
 }
 
-.hover\:text-red-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
-}
-
 .before\:hover\:text-center:hover::before {
   content: var(--tw-content);
   text-align: center;
@@ -2771,8 +3027,44 @@ footer a:hover {
 }
 
 @media (min-width: 640px) {
+  .sm\:ml-6 {
+    margin-left: 1.5rem;
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .sm\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse));
+  }
+
   .sm\:underline {
     text-decoration-line: underline;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:ml-8 {
+    margin-left: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:hidden {
+    display: none;
   }
 }
 
@@ -2783,3 +3075,9 @@ footer a:hover {
     }
   }
 }
+
+
+
+
+
+  

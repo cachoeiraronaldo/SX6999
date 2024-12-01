@@ -11,35 +11,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
+
+    
     <!-- HEADER -->
-    <header class="w-full h-[100px] bg-zinc-900 bg-home bg-cover bg-center flex items-center justify-between px-8 shadow-xl">
-        <!-- Logo com imagem -->
-        <div class="flex items-center">
-            <img src="assets/sx694.png" alt="Logo" class="max-h-[40px] object-contain" style="transform: translateY(4px) translateX(-22px);" />
-        </div>
-        
-        
-        <!-- Navegação -->
-        <nav class="text-white space-x-6">
-            <a href="#" class="hover:text-red-600 transition-all font-bold">Home</a>
-            <a href="#categories" class="hover:text-red-600 transition-all font-bold">Categorias</a>
-            <a href="#about" class="hover:text-red-600 transition-all font-bold">Sobre</a>
-            <a href="#contact" class="hover:text-red-600 transition-all font-bold">Contato</a>
-        </nav>
-        
-        <!-- Botão de Login/Assinatura -->
-        <div>
-            <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full transition-all">
-                Login / Assine
+<header class="w-full h-[100px] bg-white bg-home bg-cover bg-center flex items-center justify-between px-8 shadow-xl">
+
+    <!-- Sobreposição ao abrir o menu -->
+    <div id="overlay"></div>
+
+    <!-- Menu Hamburguer para dispositivos móveis -->
+    <nav class="flex items-center justify-between p-2 bg-black">    
+        <div class="lg:hidden">
+            <button id="hamburger" class="text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
             </button>
         </div>
-    </header>
+
+        <!-- Links do Menu (visível em telas grandes) -->
+        <div id="main-menu" class="hidden lg:flex space-x-6">
+            <a href="#" class="text-white font-bold">Home</a>
+            <a href="#" id="categories-link" id="categories-link" class="text-white font-bold">Categorias</a>
+            <a href="#about" class="text-white font-bold">Sobre</a>
+            <a href="#contact" class="text-white font-bold">Contato</a>
+        </div>
+
+        <!-- Links do Menu (visível em telas grandes) - Categorias (Inicialmente oculto) -->
+        <div id="categories-menu" class="hidden">
+            <a href="#orgia" class="text-white font-bold">Orgia</a>
+            <a href="#trisal" class="text-white font-bold">Trisal</a>
+            <a href="#suruba" class="text-white font-bold">Suruba</a>
+            <a href="#boquete" class="text-white font-bold">Boquete</a>
+            <a href="#anal" class="text-white font-bold">Anal</a>
+        </div>
+    </nav>
+
+    <!-- Menu de navegação para dispositivos móveis (oculto por padrão) -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-10 hidden">
+        <div class="bg-black text-white p-8 space-y-4 rounded-md">
+            <a href="#" class="text-white font-bold">Home</a>
+            <a href="#categories" class="text-white font-bold">Categorias</a>
+            <a href="#about" class="text-white font-bold">Sobre</a>
+            <a href="#contact" class="text-white font-bold">Contato</a>
+        </div>
+    </div>
     
-    
+    <!-- Botão de Login/Assinatura -->
+    <div class="flex flex-col sm:flex-row sm:space-x-4 items-center space-y-2 sm:space-y-0 ml-4 sm:ml-6 md:ml-8"> 
+        <button class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded-full transition-all">
+            Assine
+        </button>
+        <span class="text-gray-600 font-bold">Login</span>
+    </div>
+
+</header>
+
+       
     <!-- FIM HEADER -->
 
     <!-- Galeria -->
-    <div class="category-section">
+    <div id="orgia" class="category-section">
         <h2 class="category-title">ORGIA</h2>
         <div class="category-container">
             <button class="scroll-btn left-btn">◀</button>
@@ -91,7 +123,7 @@
         </div>
     </div>
 
-    <div class="category-section">
+    <div id="trisal" class="category-section">
         <h2 class="category-title">TRISAL</h2>
         <div class="category-container">
             <button class="scroll-btn left-btn">◀</button>
@@ -143,7 +175,7 @@
         </div>
     </div>
 
-    <div class="category-section">
+    <div id="suruba" class="category-section">
         <h2 class="category-title">SURUBA</h2>
         <div class="category-container">
             <button class="scroll-btn left-btn">◀</button>
@@ -195,7 +227,7 @@
         </div>
     </div>
 
-    <div class="category-section">
+    <div id="boquete" class="category-section">
         <h2 class="category-title">BOQUETE</h2>
         <div class="category-container">
             <button class="scroll-btn left-btn">◀</button>
@@ -247,7 +279,7 @@
         </div>
     </div>
 
-    <div class="category-section">
+    <div id="anal" class="category-section">
         <h2 class="category-title">ANAL</h2>
         <div class="category-container">
             <button class="scroll-btn left-btn">◀</button>

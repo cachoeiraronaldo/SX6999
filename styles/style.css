@@ -107,13 +107,41 @@ footer a:hover {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-    .video-card {
-        width: 150px; /* Ajuste o tamanho do vídeo em telas menores */
+@media (max-width: 1024px) { /* Para tablets */
+    .category-title {
+        font-size: 22px; /* Ajuste a fonte para tablets */
     }
 
+    .category-videos {
+        display: flex;
+        gap: 20px; /* Espaçamento entre os vídeos */
+        width: 100%;
+    }
+
+    .video-card {
+        flex: 0 0 calc(25% - 20px) !important; /* Exibe 4 vídeos por linha (25% da largura cada) */
+        margin-right: 20px !important; /* Espaçamento entre os vídeos */
+    }
+}
+
+@media (max-width: 768px) { /* Para celulares */
     .category-title {
-        font-size: 20px; /* Ajuste a fonte para telas menores */
+        font-size: 20px; /* Ajuste a fonte para celulares */
+    }
+
+    .category-videos {
+        display: flex;
+        gap: 20px; /* Espaçamento entre os vídeos */
+        width: 100%;
+    }
+
+    .video-card {
+        flex: 0 0 calc(50% - 20px) !important; /* Exibe 2 vídeos por linha (50% da largura cada) */
+        margin-right: 20px !important; /* Espaçamento entre os vídeos */
+    }
+
+    footer {
+        padding: 10px 0; /* Ajuste o padding do rodapé em telas pequenas */
     }
 }
 
@@ -170,14 +198,136 @@ footer a:hover {
     border-color: #ff4500; /* Borda muda para laranja-avermelhada (opcional) */
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .category-title {
-        font-size: 20px;
-    }
+/* Estilo padrão para grandes telas */
+.bg-home {
+    background-size: 15%; /* Reduz a imagem para % do tamanho original */
+    background-position: center; /* Garante que a imagem fique centralizada */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+}
 
-    .video-card {
-        width: 150px; /* Ajuste o tamanho em telas menores */
-        height: 100px;
+/* Ajustes para tablets (telas menores que 1024px) */
+@media (max-width: 1024px) {
+    .bg-home {
+        background-size: 20%; /* Aumenta um pouco o tamanho da imagem para tablets */
     }
 }
+
+/* Ajustes para dispositivos móveis (telas menores que 768px) */
+@media (max-width: 768px) {
+    .bg-home {
+        background-size: 25%; /* Aumenta a imagem para telas menores */
+    }
+}
+
+/* Para dispositivos muito pequenos (ex: celulares em paisagem) */
+@media (max-width: 480px) {
+    .bg-home {
+        background-size: 35%; /* Ajuste proporcional para dispositivos ainda menores */
+    }
+}
+
+/* Para dispositivos muito pequenos (ex: celulares em paisagem) */
+@media (max-width: 380px) {
+    .bg-home {
+        background-size: 27%; /* Ajuste proporcional para dispositivos ainda menores */
+    }
+}
+
+
+  
+  
+ /* Menu deslizante */
+#mobile-menu {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+    width: 50%; /* Mantendo 50% da largura */
+    max-width: 300px; /* Limite de largura */
+    background-color: #000; /* Fundo preto */
+    height: 100%; /* Altura total */
+    position: fixed;
+    top: 0; /* Alinhado ao topo */
+    left: 0; /* Alinhado à esquerda */
+    z-index: 20;
+    display: flex;
+    flex-direction: column; /* Itens alinhados verticalmente */
+    padding: 1rem;
+    gap: 1rem; /* Espaçamento entre os links */
+    justify-content: flex-start; /* Começa no topo */
+    align-items: flex-start; /* Alinhado à esquerda */
+    box-sizing: border-box; /* Garantindo que padding não altere dimensões */
+}
+
+/* Quando o menu está aberto */
+#mobile-menu.open {
+    transform: translateX(0);
+}
+
+/* Links do menu */
+#mobile-menu a {
+    text-align: left; /* Alinhar o texto à esquerda */
+    width: 100%; /* Ocupa toda a largura do menu */
+    display: block; /* Garante que cada link ocupa uma linha */
+    padding: 0.5rem 0; /* Espaçamento interno para facilitar o toque */
+    box-sizing: border-box; /* Padding não interfere na largura */
+}
+
+/* Sobreposição para o restante da tela */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sombra transparente */
+    z-index: 10;
+    display: none; /* Oculto por padrão */
+}
+
+#overlay.active {
+    display: block; /* Mostra a sobreposição ao abrir o menu */
+}
+
+/* Estilo para o menu de categorias (visível em telas grandes) */
+#categories-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%; /* Faz o menu aparecer abaixo do item "Home" */
+    background-color: #000;
+    color: white;
+    padding: 10px 0;
+    margin-top: 5px;
+    width: 200px; /* Ajuste a largura conforme necessário */
+    z-index: 100; /* Para garantir que o menu fique acima de outros elementos */
+}
+
+#categories-menu a {
+    display: block; /* Faz com que os links ocupem a largura total */
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* Tornar o menu de categorias visível */
+#categories-menu.show {
+    display: block;
+}
+
+/* Reposicionar o menu de categorias no canto superior esquerdo quando aberto */
+#categories-menu.show {
+    position: fixed; /* Fixa o menu no canto superior esquerdo */
+    top: 0; /* Alinha no topo da tela */
+    left: 0; /* Alinha no canto esquerdo da tela */
+    width: 100px; /* Largura fixa do menu */
+    height: auto; /* Ajusta a altura conforme o conteúdo */
+    margin: 0; /* Remove margens adicionais */
+    padding: 10px; /* Mantém o espaçamento interno */
+    background-color: #000; /* Garante a visibilidade do menu */
+    z-index: 1000; /* Certifica-se de que o menu fica acima de outros elementos */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para destaque */
+}
+
+
+
+
+
+  

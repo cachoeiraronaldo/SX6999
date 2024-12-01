@@ -3,23 +3,35 @@ document.querySelectorAll('.category-container').forEach((container) => {
     const rightBtn = container.querySelector('.right-btn');
     const videoRow = container.querySelector('.category-videos');
 
-    // Botão de rolar à esquerda
-    leftBtn.addEventListener('click', () => {
-        videoRow.scrollBy({ left: -videoRow.offsetWidth, behavior: 'smooth' });
-    });
+    if (leftBtn && rightBtn && videoRow) {
+        const videoWidth = videoRow.querySelector('.video-card').offsetWidth + 20; // Largura + espaçamento
 
-    // Botão de rolar à direita
-    rightBtn.addEventListener('click', () => {
-        videoRow.scrollBy({ left: videoRow.offsetWidth, behavior: 'smooth' });
-    });
+        // Função para rolar para a direita
+        rightBtn.addEventListener('click', () => {
+            if (videoRow.scrollLeft + videoRow.offsetWidth < videoRow.scrollWidth) {
+                videoRow.scrollBy({ left: videoWidth, behavior: 'smooth' });
+            }
+        });
+
+        // Função para rolar para a esquerda
+        leftBtn.addEventListener('click', () => {
+            if (videoRow.scrollLeft > 0) {
+                videoRow.scrollBy({ left: -videoWidth, behavior: 'smooth' });
+            }
+        });
+    }
 });
 
+// Função de tela cheia nos vídeos
 document.querySelectorAll('.small-video').forEach((video) => {
     video.addEventListener('click', () => {
-        video.requestFullscreen();
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        }
     });
 });
 
+// Mostrar/ocultar controles de vídeo em tela cheia
 document.addEventListener('fullscreenchange', () => {
     const fullscreenVideoControls = document.querySelector('.fullscreen-video-controls');
     if (fullscreenVideoControls) {
@@ -27,50 +39,53 @@ document.addEventListener('fullscreenchange', () => {
     }
 });
 
-// Função para rolar os vídeos para a direita
-function scrollRight() {
-    const container = document.querySelector('.category-videos');
-    const videoCards = document.querySelectorAll('.video-card');
-    const videoCardWidth = videoCards[0].offsetWidth + 20; // Considerando a margem
-    const totalWidth = container.scrollWidth;
+// Selecionando elementos
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const overlay = document.getElementById('overlay');
 
-    if (container.scrollLeft + container.offsetWidth < totalWidth) {
-        container.scrollLeft += videoCardWidth; // Rola para a direita
+// Função para abrir o menu
+hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('open');
+    overlay.classList.toggle('active'); // Exibe a sobreposição
+});
+
+// Fechar o menu ao clicar fora dele ou na sobreposição
+document.addEventListener('click', (event) => {
+    if (!mobileMenu.contains(event.target) && !hamburger.contains(event.target)) {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('open');
+        overlay.classList.remove('active'); // Remove a sobreposição
     }
-}
+});
 
-// Função para rolar os vídeos para a esquerda
-function scrollLeft() {
-    const container = document.querySelector('.category-videos');
-    const videoCards = document.querySelectorAll('.video-card');
-    const videoCardWidth = videoCards[0].offsetWidth + 20; // Considerando a margem
+// Obtendo os elementos do menu
+const categoriesLink = document.getElementById('categories-link');
+const mainMenu = document.getElementById('main-menu');
+const categoriesMenu = document.getElementById('categories-menu');
 
-    if (container.scrollLeft > 0) {
-        container.scrollLeft -= videoCardWidth; // Rola para a esquerda
+// Adicionando o evento de clique para mostrar/esconder menus
+categoriesLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Evita o comportamento padrão do link
+
+    // Alternar entre o menu principal e o menu de categorias
+    if (categoriesMenu.classList.contains('show')) {
+        categoriesMenu.classList.remove('show'); // Esconde o menu de categorias
+    } else {
+        mainMenu.classList.add('hidden'); // Oculta o menu principal
+        categoriesMenu.classList.add('show'); // Mostra o menu de categorias
     }
-}
+});
 
-// Adicionando os eventos aos botões
-document.querySelector('.left-btn').addEventListener('click', scrollLeft);
-document.querySelector('.right-btn').addEventListener('click', scrollRight);
+// Adicionando evento para cada link de categoria
+const categoryLinks = categoriesMenu.querySelectorAll('a');
 
-document.querySelectorAll('.category-container').forEach((container) => {
-    const videoRow = container.querySelector('.category-videos');
-    const leftBtn = container.querySelector('.left-btn');
-    const rightBtn = container.querySelector('.right-btn');
-    const videoWidth = videoRow.querySelector('.video-card').offsetWidth + 20; // Largura + espaçamento
-
-    // Função para rolar para a direita
-    rightBtn.addEventListener('click', () => {
-        if (videoRow.scrollLeft + videoRow.offsetWidth < videoRow.scrollWidth) {
-            videoRow.scrollBy({ left: videoWidth, behavior: 'smooth' });
-        }
-    });
-
-    // Função para rolar para a esquerda
-    leftBtn.addEventListener('click', () => {
-        if (videoRow.scrollLeft > 0) {
-            videoRow.scrollBy({ left: -videoWidth, behavior: 'smooth' });
-        }
+categoryLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        // Ao clicar em uma categoria, voltar ao menu principal
+        categoriesMenu.classList.remove('show'); // Ocultar menu de categorias
+        mainMenu.classList.remove('hidden'); // Mostrar menu principal
     });
 });
+

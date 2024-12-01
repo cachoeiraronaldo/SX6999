@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "home": "url('/assets/sx695.png')" // Adicione a imagem de fundo personalizada
+        "home": "url('/assets/sx694.png')" // Adicione a imagem de fundo personalizada
       },
       fontFamily: {
         'sans': ['Poppins', 'sans-serif'], // Aplique uma fonte moderna e elegante
